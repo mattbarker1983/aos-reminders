@@ -11,6 +11,7 @@ import { factionNames, selections, realmscape } from 'ducks'
 import { logFactionSwitch, logAllyFaction } from 'utils/analytics'
 import { TSupportedFaction } from 'meta/factions'
 import { IAllySelections, ISelections } from 'types/selections'
+import { DownloadPdfButtonComponent, PdfView } from './print/pdf'
 
 interface IAppProps {
   allyFactionName: TSupportedFaction | null
@@ -43,15 +44,12 @@ const App = (props: IAppProps) => {
       <Header />
       <PrintHeader />
       <PrintUnits />
-
       <ArmyBuilder />
-
       <AllyArmyBuilder />
-
       <Toolbar />
-
       <Reminders />
-
+      <PdfView />>
+      <DownloadPdfButtonComponent />
       <PrintFooterComponent />
       <FooterComponent />
     </div>

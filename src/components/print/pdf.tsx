@@ -1,5 +1,5 @@
 import React from 'react'
-import { Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer'
+import { Page, Text, View, Document, StyleSheet, PDFDownloadLink, PDFViewer } from '@react-pdf/renderer'
 
 // Create styles
 const styles = StyleSheet.create({
@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
 })
 
 // Create Document Component
-const MyDocument = () => (
+export const MyDocument = () => (
   <Document>
     <Page size="A4" style={styles.page}>
       <View style={styles.section}>
@@ -26,4 +26,24 @@ const MyDocument = () => (
       </View>
     </Page>
   </Document>
+)
+
+export const PdfView = () => (
+  <div className="container">
+    <div className="row">
+      <div className="col">
+        <PDFViewer>
+          <MyDocument />
+        </PDFViewer>
+      </div>
+    </div>
+  </div>
+)
+
+export const DownloadPdfButtonComponent = () => (
+  <div>
+    <PDFDownloadLink document={<MyDocument />} fileName="somename.pdf">
+      {({ blob, url, loading, error }) => (loading ? 'Loading document...' : 'Download now!')}
+    </PDFDownloadLink>
+  </div>
 )
