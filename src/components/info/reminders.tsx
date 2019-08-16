@@ -25,13 +25,13 @@ interface IRemindersProps {
 
 const RemindersComponent = (props: IRemindersProps) => {
   const {
-    factionName,
-    selections,
-    army,
-    realmscape_feature,
     allyArmies,
-    allySelections,
     allyFactionNames,
+    allySelections,
+    army,
+    factionName,
+    realmscape_feature,
+    selections,
   } = props
 
   const reminders = useMemo(() => {
@@ -54,10 +54,10 @@ const RemindersComponent = (props: IRemindersProps) => {
 }
 
 const Entry = (props: {
-  when: string
   actions: TTurnAction[]
-  idx: number
   factionName: TSupportedFaction
+  idx: number
+  when: string
 }) => {
   const { when, actions } = props
 
